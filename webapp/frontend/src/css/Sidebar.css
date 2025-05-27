@@ -1,0 +1,58 @@
+.sidebar {
+  width: 300px;
+  background-color: #ecf0f1;
+  padding: 15px;
+  border-right: 1px solid #ccc;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.tabs button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background-color: #bdc3c7;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tabs button.active {
+  background-color: #3498db;
+}
+
+.tab-content {
+  margin-top: 10px;
+}
+
+/* 위험 정보 박스 */
+.risk-info .box {
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+/* 지역 정보 박스 6개 (2행 3열) */
+.region-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.region-box {
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  text-align: center;
+}
