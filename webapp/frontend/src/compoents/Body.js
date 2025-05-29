@@ -1,10 +1,13 @@
 import React from "react";
 import '../css/Body.css';
+import VWorldMap from './map/VWorldMap.js';
 
 const Body = () => {
     return (
-        <div className="map-container">
-            <p> 구글 지도 api 들어갈 예정</p>
+        <div className="body">
+            <div className="map-container">
+                 <VWorldMap />
+            </div>
         </div>
     );
 };
