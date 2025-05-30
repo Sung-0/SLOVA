@@ -1,11 +1,19 @@
 import React from "react";
 import '../css/Body.css';
+import { MapProvider } from "./map/MapContext.js";
+import VWorldMap from './map/VWorldMap.js';
+import VWorldMenu from "./map/VWorldmenu.js";
 
 const Body = () => {
     return (
-        <div className="map-container">
-            <p> 구글 지도 api 들어갈 예정</p>
-        </div>
+        <MapProvider>
+            <div className="body">
+                <VWorldMenu z/>
+                <div className="map-container">
+                    <VWorldMap />
+                </div>
+            </div>
+        </MapProvider>
     );
 };
 
