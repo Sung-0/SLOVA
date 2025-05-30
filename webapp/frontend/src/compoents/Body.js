@@ -8,7 +8,11 @@ const Body = () => {
     return (
         <MapProvider>
             <div className="body">
+<<<<<<< HEAD
                 <VWorldMenu z/>
+=======
+                <VWorldMenu />
+>>>>>>> sung
                 <div className="map-container">
                     <VWorldMap />
                 </div>

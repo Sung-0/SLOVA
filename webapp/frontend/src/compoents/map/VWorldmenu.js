@@ -4,21 +4,40 @@ import { createGridLayer } from "./GridLayer";
 
 const VWorldMenu = () => {
 
+<<<<<<< HEAD
     /* 변수들들 */
     const { map } = useContext(MapContext) // Context에서 지도 객체 받아오기
     const ol = window.ol;
     let gridLayer = null; // 전역처럼 보존할 변수
+=======
+    /* 변수들 */
+    const { map, isGridVisible, setIsGridVisible } = useContext(MapContext) // Context에서 지도 객체 받아오기
+    const ol = window.ol;
+>>>>>>> sung
     
     /* 격자 관련 */
     const handleGridToggle = () => {
         if (!map) return;
 
+<<<<<<< HEAD
         if (gridLayer) {
             map.removeLayer(gridLayer);
             gridLayer = null;
         } else {
             gridLayer = createGridLayer(map);
             map.addLayer(gridLayer);
+=======
+        if (isGridVisible) {
+            const layers = map.getLayers().getArray();
+            const target = layers.find(l => l.get('name') === 'gridLayer');
+            if (target) map.removeLayer(target);
+            setIsGridVisible(false);
+        } else {
+            const gridLayer = createGridLayer(map);
+            gridLayer.set('name', 'gridLayer');
+            map.addLayer(gridLayer);
+            setIsGridVisible(true);
+>>>>>>> sung
         }
     };
 
@@ -26,7 +45,12 @@ const VWorldMenu = () => {
     const addHybridMapLayers = (map, apiKey) => {
         if (!map) return;
 
+<<<<<<< HEAD
         map.getLayers().clear();
+=======
+
+        map.getLayers().clear(); //전체 제거
+>>>>>>> sung
 
         const satelliteLayer = new ol.layer.Tile({
             source: new ol.source.XYZ({
@@ -56,7 +80,11 @@ const VWorldMenu = () => {
             return;
         }
 
+<<<<<<< HEAD
         map.getLayers().clear(); // 기존 레이어 제거
+=======
+        map.getLayers().clear(); //전체 제거
+>>>>>>> sung
 
         let layer;
 
@@ -69,6 +97,7 @@ const VWorldMenu = () => {
             });
             map.addLayer(layer);
 
+<<<<<<< HEAD
             //초기 위치와 줌 레벨 설정
             map.getView().setZoom(8);
             map.getView().setCenter(ol.proj.fromLonLat([127.8, 36.5]));
@@ -79,6 +108,24 @@ const VWorldMenu = () => {
             // 초기 위치와 줌 레벨 설정
             map.getView().setZoom(8);
             map.getView().setCenter(ol.proj.fromLonLat([127.8, 36.5]))
+=======
+            // 격자 유지
+            if (isGridVisible) {
+                const gridLayer = createGridLayer(map); // 다시 생성
+                gridLayer.set('name', 'gridLayer');
+                map.addLayer(gridLayer);
+            }   
+
+        } else if (type === 'HYBRID'){
+            addHybridMapLayers(map, apiKey);
+            
+            // 격자 유지
+            if (isGridVisible) {
+                const gridLayer = createGridLayer(map); // 다시 생성
+                gridLayer.set('name', 'gridLayer');
+                map.addLayer(gridLayer);
+            }   
+>>>>>>> sung
         }
     };
 
@@ -116,10 +163,16 @@ const styles = {
         flexDirection: 'column',
         gap: '16px'
     },
+<<<<<<< HEAD
     suttonGroup: {
         display: 'flex',
         flexDirection: 'column',
         gap: '6px'
+=======
+    buttonGroup: {
+        display: 'flex',
+        gap: '5px'
+>>>>>>> sung
     },
     button: {
         margin: '4px',

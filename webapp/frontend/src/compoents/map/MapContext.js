@@ -10,9 +10,16 @@ export const useMap = () => useContext(MapContext);
 // MapProvider 정의 및 export 추가
 export const MapProvider = ({ children }) =>{
     const [map, setMap] = useState(null);
+<<<<<<< HEAD
 
     return (
         <MapContext.Provider value={{ map, setMap}}>
+=======
+    const [isGridVisible, setIsGridVisible] = useState(false); // 격자 상태 추가
+
+    return (
+        <MapContext.Provider value={{ map, setMap, isGridVisible, setIsGridVisible}}>
+>>>>>>> sung
             {children}
         </MapContext.Provider>
     );

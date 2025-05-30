@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 #앱 실행 진입점
+=======
+>>>>>>> sung
 from flask import Flask
 app = Flask(__name__)
 
