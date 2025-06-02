@@ -30,4 +30,5 @@ Thumbs.db
 *.sln
 
 # 큰 파일 제거
-public/eupmyeondong.geojson
+public/data/*.json
+
