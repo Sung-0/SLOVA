@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useContext, useCallback } from 'react';
 import { MapContext } from './MapContext';
-import { createGridLayer } from './GridLayer';
+import { createGridLayer } from './GridLayer'; 
 
 const VWorldMap = () => {
 
@@ -20,7 +20,7 @@ const VWorldMap = () => {
             source: new ol.source.XYZ({
                 url: `http://api.vworld.kr/req/wmts/1.0.0/${process.env.REACT_APP_V_WORLD_MAPS_API_KEY}/Base/{z}/{y}/{x}.png`,
                 crossOrigin: 'anonymous',
-                minZoom: 6,
+                minZoom: 7,
                 maxZoom: 19,
               }),
             }),
@@ -28,7 +28,7 @@ const VWorldMap = () => {
         view: new ol.View({
             center: ol.proj.fromLonLat([127.8, 36.5]),
             zoom: 8,
-            minZoom: 6,
+            minZoom: 7,
             maxZoom: 19,
             extent: ol.proj.transformExtent(
             [124.0, 33.0, 132.0, 39.5],
