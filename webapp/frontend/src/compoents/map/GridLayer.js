@@ -7,6 +7,12 @@ export const createGridLayer = (map) => {
 
     // 줌 레벨에 따라 격자 크기(m 단위) 결정
     let gridSize;
+<<<<<<< HEAD
+    if (zoom >= 13) gridSize = 100;      // 100m
+    else if (zoom >= 11) gridSize = 250; // 250m
+    else if (zoom >= 6) gridSize = 500;  // 500m
+    else gridSize = 1000;                // 1km
+=======
 
     if (zoom >= 13) {
         gridSize = 500;  // 확대 상태 (읍면동) -< 500m
@@ -17,6 +23,7 @@ export const createGridLayer = (map) => {
     } else {
         gridSize = 50000; // 50km
     }
+>>>>>>> sung
 
     const extent = view.calculateExtent(map.getSize());
     const [minX, minY, maxX, maxY] = extent;
@@ -49,8 +56,16 @@ export const createGridLayer = (map) => {
                 width: 1,
             }),
         }),
+<<<<<<< HEAD
+    });
+
+    return vectorLayer;
+};
+
+=======
         name: 'gridLayer'
     });
 
     return vectorLayer;
 };
+>>>>>>> sung

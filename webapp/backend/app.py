@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+#앱 실행 진입점
+=======
+>>>>>>> sung
 from flask import Flask
 from flask_cors import CORS
 
