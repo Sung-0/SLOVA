@@ -1,72 +1,73 @@
 .header {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  background-color: #e6e6e6;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  font-family: sans-serif;
+}
+
+/* Top 영역 */
+.header-inner-top {
+  display: flex;
   justify-content: space-between;
-  height: 80px;               /*  고정 높이 */
-  background-color: #006400;
-  padding: 10px 20px;
-  color: white;
-  flex-shrink: 0;             /*  App에서 줄어들지 않도록 */
+  align-items: center;
+  height: 35px;
+  padding: 0 10px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
 }
 
-/* 로고 + 타이틀 영역*/
-.header-left{
-    display: flex;
-    align-items: center;
+.header-left {
+  display: flex;
+  align-items: center;
 }
 
-/*로고 스타일일*/
 .logo {
-  width: 50px;
-  height: auto;
-  cursor: pointer;
-  margin-right: 18px;
+  display: inline-block;
+  height: 30px; 
+  margin-right: 8px;
+  margin-top: 6px;
 }
 
-/* 타이틀 스타일일*/
 .title {
-  font-size: 20px;
+  font-size: 14px;
   font-weight: bold;
-  text-align: left;
-  flex-grow: 1;
 }
 
+/* 오른쪽 검색 및 버튼 */
 .header-right {
   display: flex;
   align-items: center;
-  gap: 10px;
 }
 
 .search-box {
   display: flex;
   align-items: center;
-  background-color: white;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 2px 5px;
   border-radius: 4px;
-  padding: 5px;
-  color: black;
+  margin-right: 10px;
 }
 
 .search-box input {
   border: none;
   outline: none;
-  padding: 5px;
-  font-size: 14px;
+  font-size: 12px;
+  padding: 2px;
+  width: 120px;
 }
 
 .search-icon {
-  margin-left: 5px;
-  color: #2c3e50;
+  color: #555;
+  margin-left: 4px;
 }
 
 .export-btn {
-  background-color: #3498db;
+  background: #007bff;
   border: none;
-  padding: 8px;
+  color: #fff;
+  padding: 4px 8px;
   border-radius: 4px;
-  color: white;
   cursor: pointer;
-}
-
-.export-btn:hover {
-  background-color: #2980b9;
 }

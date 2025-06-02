@@ -22,3 +22,7 @@ dist/
 # OS
 .DS_Store
 Thumbs.db
+
+# GeoJSON 데이터 무시
+data/*.geojson
+data/*.csv
