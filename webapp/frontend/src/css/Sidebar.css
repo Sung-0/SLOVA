@@ -1,9 +1,7 @@
 .sidebar {
-  width: 300px;
   background-color: #ecf0f1;
   padding: 15px;
   border-right: 1px solid #ccc;
-  height: 100vh;
   box-sizing: border-box;
   overflow-y: auto;
 }

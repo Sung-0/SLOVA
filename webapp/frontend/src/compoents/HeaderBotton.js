@@ -4,7 +4,7 @@ import { useVWorldMenuActions } from "./map/VWorldmenu";
 import resetIcon from "../assets/reset.png"; 
 import LocationSearchModal from "./map/LocationSearchModal";
 
-function HeaderBotton({ mapRef, setBoundaryGeojson }) {
+function HeaderBotton() {
     const [currentTime, setCurrentTime] = useState("");
     const [isModalOpen, setModalOpen] = useState(false);
 
@@ -31,7 +31,6 @@ function HeaderBotton({ mapRef, setBoundaryGeojson }) {
         handleGridToggle,
         handleMapChange,
         zoomToNationwide,
-        resetMap,
     } = useVWorldMenuActions();
 
     return(
@@ -44,15 +43,15 @@ function HeaderBotton({ mapRef, setBoundaryGeojson }) {
                     <LocationSearchModal 
                         isOpen={isModalOpen}
                         onClose={() => setModalOpen(false)}
-                        mapRef={mapRef}
-                        setBoundaryGeojson={setBoundaryGeojson}
-                    />
+                    /> 
                 <button className="menu-btn" onClick={() => alert('정보보기 기능은 검색 이후 동작 예정')}>정보보기</button>
                 <button className="menu-btn" onClick={() => handleMapChange("GRAPHIC")}>기본지도</button>
                 <button className="menu-btn" onClick={() => handleMapChange("HYBRID")}>항공사진</button>
                 <button className="menu-btn" onClick={zoomToNationwide}>전국지도</button>
-                <button className="menu-btn icon-only" onClick={resetMap}>
-                    <img src={resetIcon} alt="초기화" className="btn-icon" />
+                <button className="menu-btn icon-only" >
+                    <a href="/">
+                        <img src={resetIcon} alt="초기화" className="btn-icon" />
+                    </a>
                 </button>
             </div>
         </div>

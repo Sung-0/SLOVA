@@ -1,72 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useEffect} from 'react';
+import { useRegion } from '../context/RegionContext';
 
-function LocationSelect({ onLocationChange }) {
-  const [sidoCode, setSidoCode] = useState('');
-  const [sigunguList, setSigunguList] = useState([]);
-  const [sigunguCode, setSigunguCode] = useState('');
-  const [emdList, setEmdList] = useState([]);
-  const [emdCode, setEmdCode] = useState('');
-  const [riList, setRiList] = useState([]);
 
-  // 시군구 불러오기
-  useEffect(() => {
-    if (sidoCode) {
-      axios.get(`/api/sigungu/${sidoCode}`).then(res => setSigunguList(res.data));
-    }
-  }, [sidoCode]);
+function LocationSelect() {
 
-  // 읍면동 불러오기
-  useEffect(() => {
-    if (sigunguCode) {
-      axios.get(`/api/emd/${sigunguCode}`).then(res => setEmdList(res.data));
-    }
-  }, [sigunguCode]);
+  const {
+      sidoCode, sigunguCode,
+      emdCode, riCode,
+      sigunguList, emdList, riList,
+      handleSidoChange, handleSigunguChange,
+      handleEmdChange, handleRiChange,
+      setSelectedLocation
+    } = useRegion();
 
-  // 리 불러오기
-  useEffect(() => {
-    if (emdCode) {
-      axios.get(`/api/ri/${emdCode}`).then(res => setRiList(res.data));
-    }
-  }, [emdCode]);
-
-  // 각 선택 시 상위 코드 갱신
-  const handleSidoChange = (e) => {
-    setSidoCode(e.target.value);
-    setSigunguCode('');
-    setEmdCode('');
-    setSigunguList([]);
-    setEmdList([]);
-    setRiList([]);
-  };
-
-  const handleSigunguChange = (e) => {
-    setSigunguCode(e.target.value);
-    setEmdCode('');
-    setEmdList([]);
-    setRiList([]);
-  };
-
-  const handleEmdChange = (e) => {
-    setEmdCode(e.target.value);
-    setRiList([]);
-  };
-
-  const handleRiChange = (e) => {
-    const liCode = e.target.value;
-    const selected = riList.find(item => item.code === liCode);
-    if (selected && onLocationChange) {
-      onLocationChange(selected); // 지도 이동/경계 그리기
-    }
-  };
+    useEffect(() => {
+      if (riCode) {
+        setSelectedLocation({ code: riCode});
+      } else if (emdCode) {
+        setSelectedLocation({ code: emdCode});
+      } else if (sigunguCode) {
+        setSelectedLocation({ code: sigunguCode});
+      } else if (sidoCode) {
+        setSelectedLocation({ code: sidoCode });
+      }
+    }, [sidoCode, sigunguCode, emdCode, riCode, setSelectedLocation]);
 
   return (
     <table className='location-table'>
       <tbody>
         <tr>
-          <th scope="row">시/군/구</th>
+          <th scope="row">시/도</th>
           <td>
-            <select onChange={handleSidoChange} className="searchLocationSelect">
+            <select onChange={ (e) => handleSidoChange(e.target.value)} className="searchLocationSelect" value={sidoCode}>
                 <option value="">::::::::::선택::::::::::</option>
                 <option value="11">서울특별시</option> <option value="26">부산광역시</option>
                 <option value="27">대구광역시</option> <option value="28">인천광역시</option>
@@ -83,7 +48,7 @@ function LocationSelect({ onLocationChange }) {
         <tr>
           <th scope="row">시/군/구</th>
           <td>
-            <select onChange={handleSigunguChange} className="searchLocationSelect" value={sigunguCode}>
+            <select onChange={ (e) => handleSigunguChange(e.target.value)} className="searchLocationSelect" value={sigunguCode} disabled={sigunguList.length === 0}>
               <option value="">::::::::::선택::::::::::</option>
               {sigunguList.map(item => (
                 <option key={item.code} value={item.code}>
@@ -96,7 +61,7 @@ function LocationSelect({ onLocationChange }) {
         <tr>
           <th scope="row">읍/면/동</th>
           <td>
-            <select onChange={handleEmdChange} className="searchLocationSelect" value={emdCode}>
+            <select onChange={ (e) => handleEmdChange(e.target.value)} className="searchLocationSelect" value={emdCode} disabled={!emdList.length}>
               <option value="">::::::::::선택::::::::::</option>
               {emdList.map(item => (
                 <option key={item.code} value={item.code}>
@@ -109,14 +74,16 @@ function LocationSelect({ onLocationChange }) {
         <tr>
           <th scope="row">리</th>
           <td>
-            <select onChange={handleRiChange} className="searchLocationSelect">
-              <option value="">::::::::::선택::::::::::</option>
-              {riList.map(item => (
-                <option key={item.code} value={item.code}>
-                  {item.name}
-                </option>
-              ))}
-            </select>
+            {riList.length > 0 && (
+              <select onChange={ (e) => handleRiChange(e.target.value)} className="searchLocationSelect"  value={riCode}>
+                <option value="">::::::::::선택::::::::::</option>
+                {riList.map(item => (
+                  <option key={item.code} value={item.code}>
+                    {item.name}
+                  </option>
+                ))}
+              </select>
+            )}
           </td>
         </tr>
       </tbody>
