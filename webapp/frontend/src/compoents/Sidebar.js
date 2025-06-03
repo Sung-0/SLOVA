@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import '../css/Sidebar.css';
+import SidebarDefault from "./sidebarInfo/SidebarDefault";
 
 function Sidebar() {
     const [activeTab, setActivaTab] = useState('risk');
@@ -24,9 +25,7 @@ function Sidebar() {
             <div className="tab-content">
                 {activeTab === 'risk' && (
                     <div className="risk-info">
-                        <div className="box"> 위험 정보 1</div>
-                        <div className="box"> 위험 정보 2</div>
-                        <div className="box"> 위험 정보 3</div>
+                        <SidebarDefault />
                     </div>
                 )}
 

@@ -2,22 +2,26 @@ import './App.css';
 import React from 'react';
 import Header from './compoents/Header';
 import Body from './compoents/Body';
-// import Sidebar from './compoents/Sidebar';
+import Sidebar from './compoents/Sidebar';
 import Footer from './compoents/Footer';
-import { MapProvider } from "./compoents/map/MapContext.js";
+import { AppContextProvider } from './compoents/context';
 
 function App() {
   return (
-    <MapProvider>
+    <AppContextProvider>
       <div className="App">
         <Header />
         <div className='main-content'>
-          <Body />
-          {/* <Sidebar /> */}
+          <div className='body'>
+            <Body />
+          </div>
+          <div className='sidebar'>
+            <Sidebar />
+          </div>
         </div>
         <Footer />
       </div>
-    </MapProvider>
+    </AppContextProvider>
   );
 }
 
