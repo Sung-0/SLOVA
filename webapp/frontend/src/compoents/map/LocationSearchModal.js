@@ -1,44 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../../css/LocationSearchModal.css';
 import LocationSelect from './LocationSelect';
-// import axios from 'axios';
+import { useRegion } from '../context/RegionContext'
 
-const LocationSearchModal = ({ isOpen, onClose, mapRef, setBoundaryGeojson }) => {
-    /* 검색 핸들러 */
-    //선택된 행정구역 상태
-    const [sidoCode, setSidoCode] = useState('');
-    const [sigunguCode, setSigunguCode] = useState('');
-    const [emdCode, setEmdCode] = useState('');
-    const [riCode, setRiCode] = useState('');
+const LocationSearchModal = ({ isOpen, onClose }) => {
 
-    const handleSearch = async () => {
-        const bjdCode = riCode || emdCode || sigunguCode || sidoCode;
-
-        if (!bjdCode){
-            alert("행정구역을 선택하세요");
-            return;
-        }
-
-        try{
-            // 1. 중심좌표 요청
-            const res = await fetch(`/api/location-center/${bjdCode}`);
-            const { lat, lon } = await res.json();
-
-            // 2. 지도 이동
-            mapRef.current.setView([parseFloat(lat), parseFloat(lon)], 12);
-
-            // 3. 경계 요청
-            const boundaryRes = await fetch(`/api/boundary/${bjdCode}`);
-            const boundaryGeojson = await boundaryRes.json();
-
-            // 4. 경계 상태 업데이트 (예시: Context나 props 사용)
-            setBoundaryGeojson(boundaryGeojson);
-
-        } catch (err) {
-            console.error('검색 중 오류:', err);
-            alert('검색 중 오류가 발생했습니다.');
-        }
-    };
+    const { handleSearch } = useRegion();
 
     if (!isOpen) return null;
 
@@ -62,17 +29,7 @@ const LocationSearchModal = ({ isOpen, onClose, mapRef, setBoundaryGeojson }) =>
 
                     {/* 드롭 다운 테이블 */}
                     <div className="location-popup-body">
-                        <LocationSelect
-                            sidoCode={sidoCode}
-                            setSidoCode={setSidoCode}
-                            sigunguCode={sigunguCode}
-                            setSigunguCode={setSigunguCode}
-                            emdCode={emdCode}
-                            setEmdCode={setEmdCode}
-                            riCode={riCode}
-                            setRiCode={setRiCode}
-                        />
-
+                            <LocationSelect />
                         {/* 검색 버튼 */}
                         <div className='location-search-btn-wrap'>
                             <button className='location-search-btn' onClick={handleSearch}>검색</button>
@@ -82,5 +39,4 @@ const LocationSearchModal = ({ isOpen, onClose, mapRef, setBoundaryGeojson }) =>
             </div>
         );
 };
-
 export default LocationSearchModal;

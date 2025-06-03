@@ -1,19 +1,23 @@
 import React, { useRef, useEffect, useContext, useCallback } from 'react';
-import { MapContext } from './MapContext';
+import { MapContext } from '../context/MapContext';
+import { RegionContext } from '../context/RegionContext';
 import { createGridLayer } from './GridLayer'; 
 
 const VWorldMap = () => {
 
     const mapElement = useRef(null);   // 지도 DOM 참조용
-    const { setMap, map,isGridVisible } = useContext(MapContext); // map 객체를 context에 저장할 setter
+
+     // map 객체를 context에 저장할 setter
+    const { setMap, map, isGridVisible, } = useContext(MapContext);
+    const { boundaryGeojson, boundaryLayer, setBoundaryLayer} = useContext(RegionContext);
 
   // 지도 생성 함수 - useCallback으로 메모이제이션
      const createMap = useCallback(() => {
-        const ol = window.ol;
+      const ol = window.ol;
         if (!ol || !mapElement.current) return;
 
         // 지도 객체 생성
-        const map = new ol.Map({
+        const mapInstance = new ol.Map({
         target: mapElement.current,  // ref.current 직접 사용
         layers: [
             new ol.layer.Tile({
@@ -37,10 +41,10 @@ const VWorldMap = () => {
           }),
         });
 
-        setMap(map);
+        setMap(mapInstance);
     }, [setMap]);
 
-  // 스크립트 로딩 및 지도 생성 호출
+  // ol.js 스크립트 로딩 및 지도 생성 호출
     useEffect(() => {
         const existingScript = document.querySelector('script[src="https://openlayers.org/en/v4.6.5/build/ol.js"]');
         if (existingScript) {
@@ -54,6 +58,49 @@ const VWorldMap = () => {
         document.body.appendChild(script);
 
     }, [createMap]);
+
+      // 경계선 그리기
+     useEffect(() => {
+      const ol = window.ol;
+      if (!map || !boundaryGeojson) return;
+
+      // 기존 경계 레이어 제거
+      if (boundaryLayer) {
+        map.removeLayer(boundaryLayer);
+        setBoundaryLayer(null);
+      }
+
+      //GeoJSON에서 features 읽기
+      const features = new ol.format.GeoJSON().readFeatures(boundaryGeojson, {
+        featureProjection: 'EPSG:3857'
+      });
+
+      //Vector Source 생성
+      const vectorSource = new ol.source.Vector({
+        features: features,
+      });
+
+      //Vector Layer 생성
+      const vectorLayer = new ol.layer.Vector({
+        source: vectorSource,
+        style: new ol.style.Style({
+          stroke: new ol.style.Stroke({
+            color: 'red',
+            width: 2,
+          }),
+          fill: new ol.style.Fill({
+            color: 'rgba(255, 0, 0, 0.2)',
+          }),
+        }),
+      });
+
+      // 지도에 레이어 추가
+      map.addLayer(vectorLayer);
+
+      //Context에 저장
+      setBoundaryLayer(vectorLayer);
+     }, [map, boundaryGeojson, boundaryLayer, setBoundaryLayer]);
+
 
     // 줌 변경에 따라 격자 다시 그리기
     useEffect(() => {

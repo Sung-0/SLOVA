@@ -1,10 +1,12 @@
 import { useContext } from "react";
-import { MapContext } from "./MapContext";
+import { MapContext } from "../context/MapContext";
+import { RegionContext } from "../context/RegionContext";
 import { createGridLayer } from "./GridLayer";
 
 export const useVWorldMenuActions = () => {
     /* 변수들 */
-    const { map, isGridVisible, setIsGridVisible } = useContext(MapContext);
+    const { map, isGridVisible, setIsGridVisible} = useContext(MapContext);
+    const { boundaryGeojson, setBoundaryLayer } = useContext(RegionContext);
     const ol = window.ol;
 
     /* 격자  */
@@ -72,6 +74,32 @@ export const useVWorldMenuActions = () => {
             gridLayer.set('name', 'gridLayer');
             map.addLayer(gridLayer);
         }
+
+        // 기존 경계 레이어 유지
+        if (boundaryGeojson) {
+            const vectorSource = new ol.source.Vector({
+                features: new ol.format.GeoJSON().readFeatures(boundaryGeojson, {
+                    featureProjection: 'EPSG:3857',
+                }),
+            });
+
+            const boundaryLayer = new ol.layer.Vector({
+                source: vectorSource,
+                style: new ol.style.Style({
+                    stroke: new ol.style.Stroke({
+                        color: 'red',
+                        width: 2,
+                    }),
+                    fill: new ol.style.Fill({
+                         color: 'rgba(255, 0, 0, 0.1)',
+                    }),
+                }),
+            });
+
+            boundaryLayer.set('name', 'boundaryLayer');
+            map.addLayer(boundaryLayer);
+            setBoundaryLayer(boundaryLayer);
+        }
     };
 
     const zoomToNationwide = () => {
@@ -81,18 +109,9 @@ export const useVWorldMenuActions = () => {
         map.getView().setZoom(7.5);
     };
 
-    const resetMap = () => {
-        if (!map) return;
-        const center = ol.proj.fromLonLat([127.5, 36.5]);
-        map.getView().setCenter(center);
-        map.getView().setZoom(8);
-        map.getLayers().clear();
-    };
-
     return {
         handleGridToggle,
         handleMapChange,
         zoomToNationwide,
-        resetMap,
     };
 };
