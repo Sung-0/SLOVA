@@ -40,7 +40,7 @@ const ZoomControls = () => {
   };
 
   const minZoom = map?.getView()?.getMinZoom?.() ?? 7;
-  const maxZoom = map?.getView()?.getMaxZoom() ?? 19;
+  const maxZoom = map?.getView()?.getMaxZoom() ?? 18;
 
   const wrapperStyle = {
     position: 'absolute',

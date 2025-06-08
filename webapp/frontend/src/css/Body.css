@@ -1,12 +1,12 @@
 /* Body.css */
-
 .body {
   height: 100%;
   width: 100%;
   flex: 1; /* 나머지 공간 전체 사용 */
   position: relative;
   display: flex;
-  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
 }
 
 .map-container {
@@ -15,8 +15,18 @@
 
 }
 
-.map-container > div {
-  width: 100%;
-  height: 100%;
+/* MaptToggle 관련 위치 css 코드*/
+.map-type-toggle-container {
+  position: absolute;       /* 지도 위 고정 배치 */
+  top: 17px;                /* 상단 여백 */
+  right: 14px;               /* 우측 여백 */
+  z-index: 1000;            /* 다른 요소보다 위에 위치 */
 }
 
+/* BodyRankToggle 관련  위치 css 코드*/
+.rank-toggle-container {
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  z-index: 1000;
+}
