@@ -1,0 +1,51 @@
+.rank-toggle-checkbox {
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+}
+
+.rank-toggle-box {
+  color: #fff;
+  font-size: 13px;
+  letter-spacing: 0.2px;
+  word-spacing: 3px;
+  background-color: rgba(94, 93, 93, 0.43); /* 투명한 배경 */
+  padding: 6px 10px;
+  display: inline-block;
+  border-radius: 12px;
+  text-shadow: 1px 1px 1px #000;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.legend-box {
+  margin-top: 10px;
+  width: 130px;
+  height: 140px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.legend-title {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  border: 1px solid #333;
+}

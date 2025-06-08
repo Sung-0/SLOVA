@@ -5,19 +5,17 @@ import Body from './compoents/Body';
 import Sidebar from './compoents/Sidebar';
 import Footer from './compoents/Footer';
 import { AppContextProvider } from './compoents/context';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
     <AppContextProvider>
+      <ToastContainer />
       <div className="App">
         <Header />
         <div className='main-content'>
-          <div className='body'>
             <Body />
-          </div>
-          <div className='sidebar'>
             <Sidebar />
-          </div>
         </div>
         <Footer />
       </div>

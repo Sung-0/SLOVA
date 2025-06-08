@@ -1,17 +1,20 @@
 import { useEffect} from 'react';
 import { useRegion } from '../context/RegionContext';
+import {
+  handleSidoChange,
+  handleSigunguChange,
+  handleEmdChange,
+  handleRiChange
+} from '../map/regionHandlers'
 
 
 function LocationSelect() {
+  const region = useRegion();
 
   const {
-      sidoCode, sigunguCode,
-      emdCode, riCode,
-      sigunguList, emdList, riList,
-      handleSidoChange, handleSigunguChange,
-      handleEmdChange, handleRiChange,
-      setSelectedLocation
-    } = useRegion();
+    sidoCode, sigunguCode, emdCode, riCode,
+    sigunguList, emdList, riList, setSelectedLocation
+  } = region;
 
     useEffect(() => {
       if (riCode) {
@@ -31,7 +34,7 @@ function LocationSelect() {
         <tr>
           <th scope="row">시/도</th>
           <td>
-            <select onChange={ (e) => handleSidoChange(e.target.value)} className="searchLocationSelect" value={sidoCode}>
+            <select onChange={ (e) => handleSidoChange(e.target.value, region)} className="searchLocationSelect" value={sidoCode}>
                 <option value="">::::::::::선택::::::::::</option>
                 <option value="11">서울특별시</option> <option value="26">부산광역시</option>
                 <option value="27">대구광역시</option> <option value="28">인천광역시</option>
@@ -48,7 +51,7 @@ function LocationSelect() {
         <tr>
           <th scope="row">시/군/구</th>
           <td>
-            <select onChange={ (e) => handleSigunguChange(e.target.value)} className="searchLocationSelect" value={sigunguCode} disabled={sigunguList.length === 0}>
+            <select onChange={ (e) => handleSigunguChange(e.target.value, region)} className="searchLocationSelect" value={sigunguCode} disabled={sigunguList.length === 0}>
               <option value="">::::::::::선택::::::::::</option>
               {sigunguList.map(item => (
                 <option key={item.code} value={item.code}>
@@ -61,7 +64,7 @@ function LocationSelect() {
         <tr>
           <th scope="row">읍/면/동</th>
           <td>
-            <select onChange={ (e) => handleEmdChange(e.target.value)} className="searchLocationSelect" value={emdCode} disabled={!emdList.length}>
+            <select onChange={ (e) => handleEmdChange(e.target.value, region)} className="searchLocationSelect" value={emdCode} disabled={!emdList.length}>
               <option value="">::::::::::선택::::::::::</option>
               {emdList.map(item => (
                 <option key={item.code} value={item.code}>
@@ -75,7 +78,7 @@ function LocationSelect() {
           <th scope="row">리</th>
           <td>
             {riList.length > 0 && (
-              <select onChange={ (e) => handleRiChange(e.target.value)} className="searchLocationSelect"  value={riCode}>
+              <select onChange={ (e) => handleRiChange(e.target.value, region)} className="searchLocationSelect"  value={riCode}>
                 <option value="">::::::::::선택::::::::::</option>
                 {riList.map(item => (
                   <option key={item.code} value={item.code}>

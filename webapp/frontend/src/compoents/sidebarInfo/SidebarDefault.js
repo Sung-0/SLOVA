@@ -8,7 +8,8 @@ function SidebarDefault() {
     return (
         <div className="sidbar-default">
             <h3 className="section-title">
-                <FaChartBar className="icon" /> 전체지역정보
+                <FaChartBar className="icon" /> 
+                <span className="text">A. 위험 평가 및 현황</span>
             </h3>
 
             <div className="info-grid">
