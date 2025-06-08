@@ -1,3 +1,24 @@
+.section-title {
+  display: flex;
+  align-items: center; /* 세로 가운데 정렬 */
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #2c3e50;
+}
+
+.section-title span.text {
+  position: relative;
+  top: -2px;
+}
+
+.section-title .icon {
+  margin-right: 10px; /* 아이콘과 글자 사이 여백 */
+  font-size: 20px;    /* 아이콘 크기 조정 */
+  vertical-align: middle;
+  color: #2b79ff;
+}
+
 /* 전체 섹션 제목 */
 .info-section h3 {
   margin: 0 0 16px 0;

@@ -3,41 +3,49 @@ import '../css/Sidebar.css';
 import SidebarDefault from "./sidebarInfo/SidebarDefault";
 
 function Sidebar() {
-    const [activeTab, setActivaTab] = useState('risk');
+    const [activeTab, setActiveTab] = useState('risk');
 
     return(
         <div className="sidebar">
-            <div className="tabs">
-                <button
-                    className={activeTab === 'risk' ? 'active' : ''}
-                    onClick={() => setActivaTab('risk')}
-                >
-                    위험정보
-                </button>
-                <button
-                    className={activeTab === 'region' ? 'active' : ''}
-                    onClick={() => setActivaTab('region')}
-                >
-                    지역정보
-                </button>
-            </div>
+            <div className="sidebar-box">
+                <div className="tabs">
+                    <button
+                        className={activeTab === 'risk' ? 'active' : ''}
+                        onClick={() => setActiveTab('risk')}
+                    >
+                        A. 위험 평가 및 현황
+                    </button>
+                    <button
+                        className={activeTab === 'response' ? 'active' : ''}
+                        onClick={() => setActiveTab('response')}
+                    >
+                        B. 대응 체계 및 행동 지침
+                    </button>
+                    <button
+                        className={activeTab === 'cooperation' ? 'active' : ''}
+                        onClick={() => setActiveTab('cooperation')}
+                    >
+                        C. 협력 체계 및 관리
+                    </button>
+                </div>
 
-            <div className="tab-content">
-                {activeTab === 'risk' && (
-                    <div className="risk-info">
-                        <SidebarDefault />
-                    </div>
-                )}
+                <div className="tab-content">
+                    {activeTab === 'risk' && (
+                        <div className="risk-info">
+                            <SidebarDefault />
+                        </div>
+                    )}
 
-                {activeTab === 'region' &&(
-                    <div className="region-info">
-                        {[...Array(6)].map((_, i) => (
-                            <div className="region-box" key={i}>
-                                지역 정보 {i + 1}
-                            </div>
-                        ))}
-                    </div>
-                )}
+                    {activeTab === 'response' &&(
+                        <div className="response-info">
+                            {[...Array(6)].map((_, i) => (
+                                <div className="response-box" key={i}>
+                                    지역 정보 {i + 1}
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );

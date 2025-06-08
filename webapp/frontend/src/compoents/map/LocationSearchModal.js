@@ -1,12 +1,29 @@
 import React from 'react';
 import '../../css/LocationSearchModal.css';
 import LocationSelect from './LocationSelect';
-import { useRegion } from '../context/RegionContext'
+import { useRegion } from '../context/RegionContext';
+import { useMap } from '../context/MapContext';
+import { useChangeMap } from '../context/ChangeMapContext'; 
+import { handleSearch } from './RegionSearch';
 
 const LocationSearchModal = ({ isOpen, onClose }) => {
 
-    const { handleSearch } = useRegion();
+    const {
+        selectedLocation, boundaryLayer,
+        setBoundaryGeojson, setBoundaryLayer
+    } = useRegion();
 
+    const { map } = useMap();
+    const { mapType } = useChangeMap();
+    const ol = window.ol;
+
+    const onSearchClick = () => {
+        handleSearch({
+            selectedLocation, map, ol,
+            boundaryLayer, setBoundaryGeojson,
+            setBoundaryLayer, mapType
+        });
+    };
     if (!isOpen) return null;
 
     return (
@@ -32,7 +49,7 @@ const LocationSearchModal = ({ isOpen, onClose }) => {
                             <LocationSelect />
                         {/* 검색 버튼 */}
                         <div className='location-search-btn-wrap'>
-                            <button className='location-search-btn' onClick={handleSearch}>검색</button>
+                            <button className='location-search-btn' onClick={onSearchClick}>검색</button>
                         </div>
                     </div>
                 </div>
