@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useMemo } from 'react';
 
 // 1. Context 객체 생성
 export const MapContext = createContext(null);
@@ -10,8 +10,10 @@ export const useMap = () => useContext(MapContext);
 export const MapProvider = ({ children }) => {
   const [map, setMap] = useState(null);
 
+
+const value = useMemo(() => ({ map, setMap }), [map]);
   return (
-    <MapContext.Provider value={{ map, setMap }}>
+    <MapContext.Provider value={value}>
       {children}
     </MapContext.Provider>
   );

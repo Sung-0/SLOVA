@@ -1,0 +1,235 @@
+.log-popup {
+  padding: 20px 10px 10px 10px;
+}
+
+.log-menu-container {
+  font-size: 14px;
+  color: #000;
+}
+
+/* 버튼을 오른쪽 정렬 */
+.log-menu-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.log-menu-buttons button {
+  padding: 6px 14px;
+  border-radius: 4px;
+  border: none;
+  font-weight: bold;
+  background-color: #f0f0f0;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 초기화 버튼 호버 */
+.log-menu-buttons button:hover:not(.query):not(.download) {
+  background-color: #d9d9d9;
+}
+
+/* 조회 버튼 기본 스타일 */
+.log-menu-buttons .query {
+  background-color: #4caf50;
+  color: white;
+}
+
+/* 조회 버튼 호버 */
+.log-menu-buttons .query:hover {
+  background-color: #45a045; /* 살짝 더 진한 초록 */
+}
+
+/* 다운로드 버튼 기본 스타일 */
+.log-menu-buttons .download {
+  background-color: #888;
+  color: #eee;
+  font-weight: 600;
+}
+
+/* 다운로드 버튼 호버 */
+.log-menu-buttons .download:hover {
+  background-color: #6b6b6b; /* 좀 더 진한 회색 */
+  color: #fff; /* 흰색 텍스트 강조 */
+}
+
+/* 컨테이너 */
+.log-inquiry {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.log-inquiry-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+  font-size: 14px;
+  border-top: 4px solid #ccc;
+  border-bottom: 4px solid #ccc;
+}
+
+/* 행 자체에는 선 없음 */
+.log-inquiry-row {
+  background-color: #f5f5f5;
+  height: 48px;
+}
+
+/* 왼쪽 라벨 td */
+.log-inquiry-label {
+  width: 15%;
+  text-align: center;
+  font-weight: bold;
+  background-color: #e1dcdc;
+  padding: 6px;
+  white-space: nowrap;
+  border: none;
+}
+
+/* 입력 필드 있는 칸 */
+.log-inquiry-field {
+  width: 30%;
+  background-color: white;
+  padding: 6px 10px;
+  box-sizing: border-box;
+  border: none;
+  text-align: center;
+}
+
+/* 날짜 그룹 스타일 */
+.log-date-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.log-date-input {
+  flex: 1;
+  padding: 4px 6px;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.log-date-separator {
+  padding: 0 4px;
+  font-weight: bold;
+}
+
+/* 텍스트 & 셀렉트 입력 */
+.log-text-input,
+.log-select-input {
+  width: 180px;
+  padding: 4px 6px;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+/* 테이블 */
+/* 전체 테이블 래퍼 */
+.log-table-wrapper {
+  width: 100%;
+  margin-top: 25px;
+}
+
+/* 헤더 테이블 */
+.log-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 14px;
+}
+
+.log-table th {
+  background-color: #f2f2f2;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+/* tbody만 스크롤 영역 */
+.log-table-body-scroll {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.log-table td {
+  padding: 10px;
+  text-align: center;
+  border: none;
+  border-right: 1px dotted #bbb;
+  color: #000;
+}
+
+.log-table td:last-child {
+  border-right: none;
+}
+
+.log-table tbody tr:nth-child(odd) {
+  background-color: white;
+}
+
+.log-table tbody tr:nth-child(even) {
+  background-color: #e1dcdc;
+}
+
+/* 홀수줄: 흰색, 짝수줄: 회색 */
+.log-table tbody tr:nth-child(odd) {
+  background-color: white;
+}
+
+.log-table tbody tr:nth-child(even) {
+  background-color: #e1dcdc;
+}
+
+/* 실제 스크롤바 커스텀 스타일 */
+.log-table-body-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.log-table-body-scroll::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+}
+
+/* 선택사항: Firefox 지원 */
+.log-table-body-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+.status.login-success {
+  color: green;
+  font-weight: bold;
+}
+
+.status.login-fail {
+  color: red;
+  font-weight: bold;
+}
+
+.status.logout {
+  color: gray;
+  font-weight: bold;
+}
+
+.swal-custom-z {
+  z-index: 3000 !important; /* 팝업 박스 */
+}
+
+.swal2-container {
+  z-index: 3000 !important; /* 전체 모달 컨테이너 */
+}
+
+.swal2-backdrop-show {
+  z-index: 2999 !important; /* 뒷배경도 같이 올려야 겹치지 않음 */
+}

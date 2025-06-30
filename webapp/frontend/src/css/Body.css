@@ -12,21 +12,59 @@
 .map-container {
   width: 100%;
   height: 100%;
+}
 
+.map-type-toggle-container {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  z-index: 1000;
+}
+
+.menu-btn {
+  border: 1px solid hsl(0, 0%, 70%);
+  border-radius: 10px;
+  cursor: pointer;
+  min-width: 80px;
+  height: 25px;
+  font-weight: bold;
+}
+
+.menu-btn:hover {
+  background-color: #3a3a3a;
+  color: #f7b57e;
+}
+
+.location-search-container {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  z-index: 1000;
 }
 
 /* MaptToggle 관련 위치 css 코드*/
 .map-type-toggle-container {
   position: absolute;       /* 지도 위 고정 배치 */
-  top: 17px;                /* 상단 여백 */
-  right: 14px;               /* 우측 여백 */
+  bottom: 25px;                /* 상단 여백 */
+  left: 16px;               /* 우측 여백 */
   z-index: 1000;            /* 다른 요소보다 위에 위치 */
 }
 
 /* BodyRankToggle 관련  위치 css 코드*/
 .rank-toggle-container {
   position: absolute;
-  top: 20px;
-  left: 10px;
-  z-index: 1000;
+  top: 104px;
+  left: 3%;
+  z-index: 500;
+}
+
+.legend-title {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 필요 시 가로도 중앙 */
 }

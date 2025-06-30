@@ -22,7 +22,7 @@ def prepare_marker_json():
     army_df['rank'] = matched_ranks['rank']
 
     # 필요한 컬럼 정제
-    markers = army_df[['name', 'lat', 'lon', 'rank', 'img']].to_dict(orient='records')
+    markers = army_df[[ 'sd_cd' ,'name', 'lat', 'lon', 'rank', 'img', 'id', 'personnel', 'features', 'area']].to_dict(orient='records')
     
     # 경로 구분자 호환 처리
     output_path = os.path.join('data', 'markers.json')

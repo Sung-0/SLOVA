@@ -10,5 +10,5 @@
   flex: 1;            /* 남은 영역 전부 차지 */
   overflow: hidden;   /* 스크롤 제어는 내부에서 */
   min-height: 0;
-  /* padding-top: 1px;  */
+  transition: all 0.3s ease; /* 부드러운 좌우 변화 */
 }

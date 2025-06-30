@@ -1,20 +1,25 @@
-.header {
-  display: flex;
-  flex-direction: column;
-  background-color: #e6e6e6;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  font-family: sans-serif;
-}
-
-/* Top 영역 */
-.header-inner-top {
+.header-inner-merged {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 35px;
-  padding: 0 10px;
-  background-color: #f5f5f5;
-  border-bottom: 1px solid #ddd;
+  background-color: #2a3f54; /* 건메탈 네이비 */
+  color: #f5f5f5;
+  padding: 8px 20px;
+  height: 48px;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo {
+  height: 36px;
+  margin-right: 10px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  white-space: nowrap;
+  margin-top: 7px;
 }
 
 .header-left {
@@ -22,52 +27,59 @@
   align-items: center;
 }
 
-.logo {
-  display: inline-block;
-  height: 30px; 
-  margin-right: 8px;
-  margin-top: 6px;
-}
-
-.title {
-  font-size: 14px;
-  font-weight: bold;
-}
-
-/* 오른쪽 검색 및 버튼 */
 .header-right {
   display: flex;
   align-items: center;
+  gap: 12px;
 }
 
-.search-box {
+.current-time {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  font-weight: 400;
+  white-space: nowrap;
+  color: #ddd;
+}
+
+.header-btn {
   display: flex;
   align-items: center;
-  background: #fff;
-  border: 1px solid #ccc;
-  padding: 2px 5px;
-  border-radius: 4px;
-  margin-right: 10px;
-}
-
-.search-box input {
+  padding: 6px 12px;
   border: none;
-  outline: none;
-  font-size: 12px;
-  padding: 2px;
-  width: 120px;
-}
-
-.search-icon {
-  color: #555;
-  margin-left: 4px;
-}
-
-.export-btn {
-  background: #007bff;
-  border: none;
-  color: #fff;
-  padding: 4px 8px;
-  border-radius: 4px;
+  border-radius: 6px;
+  background-color: #3b5368;
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.header-btn:hover {
+  background-color: #2e4053;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rank-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.user-name {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.span-text {
+  margin-bottom: 2px;
 }

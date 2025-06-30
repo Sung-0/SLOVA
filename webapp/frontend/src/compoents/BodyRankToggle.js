@@ -2,22 +2,15 @@ import React from "react";
 import { useLandslide } from "./context/LandslideContext";
 import LandslideLayer from "./map/LandslideLayer";
 import '../css/Body.css';
+import { RANK_INFO } from "./RANK_INFO";
 
-const RANK_LABELS = {
-    5: '매우 위험',
-    4: '위험',
-    3: '주의',
-    2: '낮음',
-    1: '매우 낮음',
-};
+const RANK_LABELS = Object.fromEntries(
+    Object.entries(RANK_INFO).map(([rank, info]) => [rank, info.name])
+);
 
-const RANK_COLORS = {
-  5: '#FF0000',
-  4: '#FFA500',
-  3: '#FFFF00',
-  2: '#00FFFF',
-  1: '#0000FF',
-};
+const RANK_COLORS = Object.fromEntries(
+    Object.entries(RANK_INFO).map(([rank, info]) => [rank, info.color])
+);
 
 export default function BodyRankToggle() {
     const { showLandslide, setShowLandslide } = useLandslide();
@@ -42,7 +35,9 @@ export default function BodyRankToggle() {
                 
                 {showLandslide && (
                     <div className="legend-box">
-                        <div className="legend-title">실시간산사태위험도</div>
+                        <div className="legend-title">
+                            <span className="legend-titles">위험도</span>
+                            </div>
                         {Object.entries(RANK_LABELS).map(([rank, label]) => (
                             <div key={rank} className="legend-item">
                                 <span

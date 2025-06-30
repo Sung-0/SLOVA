@@ -1,18 +1,70 @@
 .ol-popup {
-    position: absolute;
-    background-color: white;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #cccccc;
-    bottom: 12px;
-    left: -50px;
-    min-width: 120px;
-    z-index: 100;
-    font-size: 13px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 10px;
+  max-width: 300px;
+  font-family: 'Segoe UI', sans-serif;
+  word-wrap: break-word;
+  pointer-events: none;
+
+  bottom: 12px;   /* 마커 기준 위쪽 위치 */
+  left: -50%;     /* 가운데 정렬 */
+  transform: translateY(-10%); /* 마커 바로 위로 올라가게 */
+}
+
+
+.popup-card {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.popup-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 28px;
+}
+
+.popup-info {
+  font-size: 14px;
+  line-height: 1.4;
+  word-break: break-word;
+  flex: 1;
+}
+
+.mark-popup-title {
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 6px;
+  transform: translateX(-45px);
+}
+
+.popup-row {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  margin-bottom: 4px;
+}
+
+.popup-label {
+  display: table-cell;
+  width: 35px;
+  font-weight: 500;
+  color: #333;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.popup-row-value {
+  flex: 1;
+  word-break: break-word;
+}
+.popup-value {
+  display: table-cell;
+  vertical-align: top;
+  word-break: break-word;
 }

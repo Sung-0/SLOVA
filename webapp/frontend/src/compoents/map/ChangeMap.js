@@ -16,7 +16,7 @@ export const ChangeMap = () => {
       // 기존 레이어 남기고 배경 지도만 제거
       const layersToKeep = map.getLayers().getArray().filter(layer => {
         const name = layer.get('name');
-        return name === 'markLayer' || name === 'landslideLayer' || name === 'boundaryLayer';
+        return name === 'markLayer' || name === 'landslideLayer' || name === 'boundaryLayer' || name === 'FacilityLayer';
       });
 
       map.getLayers().clear(); // 전체 클리어

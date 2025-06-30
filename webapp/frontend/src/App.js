@@ -4,10 +4,12 @@ import Header from './compoents/Header';
 import Body from './compoents/Body';
 import Sidebar from './compoents/Sidebar';
 import Footer from './compoents/Footer';
-import { AppContextProvider } from './compoents/context';
 import { ToastContainer } from 'react-toastify';
+import { AppContextProvider } from './compoents/context/index';
+import SidebarCloseButton from "./compoents/SidebarCloseButton";
 
 function App() {
+
   return (
     <AppContextProvider>
       <ToastContainer />
@@ -15,6 +17,7 @@ function App() {
         <Header />
         <div className='main-content'>
             <Body />
+            <SidebarCloseButton />
             <Sidebar />
         </div>
         <Footer />
