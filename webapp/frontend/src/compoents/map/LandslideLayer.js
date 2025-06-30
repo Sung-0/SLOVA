@@ -35,11 +35,11 @@ const LandslideLayer = () => {
           style: (feature) => {
             const rank = feature.get("rank");
             const fillColor = {
-              1: "rgba(0, 0, 255, 0.55)",
-              2: "rgba(110, 248, 248, 0.55)",
-              3: "rgba(253, 253, 111, 0.55)",
-              4: "rgba(255, 165, 0, 0.55)",
-              5: "rgba(255, 0, 0, 0.55)",
+              1: "rgba(0, 0, 255, 0.58)",
+              2: "rgba(110, 248, 248, 0.58)",
+              3: "rgba(253, 253, 111, 0.58)",
+              4: "rgba(255, 165, 0, 0.58)",
+              5: "rgba(255, 0, 0, 0.58)",
             }[rank] || "rgba(150, 150, 150, 0.55)";
 
             return new ol.style.Style({

@@ -1,0 +1,161 @@
+/* 기본 섹션 제목 (사이드바 등) */
+.section-title {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #2c3e50;
+}
+
+.section-title .icon {
+  margin-right: 8px; /* 아이콘과 글자 사이 여백 */
+  font-size: 20px;    /* 아이콘 크기 조정 */
+  vertical-align: middle;
+}
+
+.section-title span.text {
+  position: relative;
+  top: -2px; /* 글자를 위로 2px 올림 */
+}
+
+.section-title .icon {
+  margin-right: 8px;
+  font-size: 20px;
+  vertical-align: middle;
+  color: #2b79ff; /* 원하는 색상 */
+}
+
+/* 카드 그룹 배치 */
+.info-grid {
+  display: grid;
+  gap: 0px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+
+/* 카드 제목  */
+.info-card-title {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 24px 0 12px;
+  color: #2c3e50;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 8px;
+}
+
+.info-card-title .icon {
+  margin-right: 10px;
+  font-size: 20px;
+  color: #2b79ff;
+}
+
+.info-rank-title {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 24px 0 12px;
+  color: #2c3e50;
+  padding-bottom: 8px;
+}
+
+.info-rank-title .icon {
+  margin-right: 10px;
+  font-size: 20px;
+  color: #2b79ff;
+}
+
+
+/* 기본 상태: sticky, 상단 고정 */
+.sidebar-toc {
+  position: sticky;
+  top: 0;
+  background: var(--color-background, #fff);
+  border: 1px solid var(--color-border, #ddd);
+  border-radius: var(--radius-md, 8px);
+  padding: 16px;
+  box-shadow: var(--shadow-sm, 0 1px 4px rgba(0,0,0,0.08));
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+  width: auto;
+  
+  /* 전환 효과 */
+  transition: all 0.4s ease;
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 10;
+}
+
+/* 축소된 상태 */
+.sidebar-toc.collapsed {
+  position: fixed;
+  top: 179px;
+  right: 30px;
+  width: 100px;
+  height: 26px;
+  overflow: hidden;
+  padding: 8px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  /* 전환 효과 */
+  opacity: 0.9;
+  transform: translateX(0); /* 필요 시 10~20px 정도만 밀어도 됨 */
+  box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+}
+
+/* 마우스 오버 시 다시 확장 */
+.sidebar-toc.collapsed:hover {
+  height: auto;
+  width: 210px;
+  padding: 10px;
+}
+
+.toc-title {
+  display: flex;
+  align-items: center; /* 아이콘과 글자를 수직 가운데 정렬 */
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  padding-bottom: 9px;
+  border-bottom: 1px solid #ccc;
+  margin-top: 5px;
+  margin-left: 8px;
+  gap: 6px; /* 아이콘과 글자 사이 간격 */
+}
+
+.toc-title span {
+  transform: translateY(-1px); /* 글자만 위로 올림 */
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toc-list li {
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+  transition: background 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.toc-list li:hover {
+  background-color: #f5f5f5;
+  border-color: #ddd;
+}
+
+.toc-list li:active {
+  background-color: #eaeaea;
+}

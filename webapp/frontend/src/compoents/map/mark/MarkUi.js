@@ -6,7 +6,7 @@ const MarkUi = () => {
     const { popupRef, contentRef } = useMark();
 
     return (
-        <div ref={popupRef} className="ol-popup" style={{ display: 'none' }}>
+        <div ref={popupRef} className="ol-popup mark-popup" style={{ display: 'none' }}>
              <div ref={contentRef}></div>
         </div>
     );

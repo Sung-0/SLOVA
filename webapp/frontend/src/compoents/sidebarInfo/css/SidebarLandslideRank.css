@@ -1,0 +1,67 @@
+.sidebar-rank-box {
+    background: var(--color-background, #fff);
+    border: 1px solid var(--color-border, #ddd);
+    border-radius: var(--radius-lg, 10px);
+    padding: 12px 16px;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm, 0 1px 2px rgba(0,0,0,0.08));
+    margin-bottom: 16px;
+}
+
+.sidebar-rank-box:hover {
+    box-shadow: var(--shadow-md, 0 3px 8px rgba(0,0,0,0.12));
+    transform: translateY(-1px);
+}
+
+.sidebar-rank-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 8px 0; 
+    text-align: left; /* 왼쪽 정렬 */
+    color: var(--color-text-primary, #333);
+}
+
+.rank-group {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.rank-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px; /* 모든 칸 동일 너비 */
+  gap: 4px;
+}
+
+.rank-icon {
+  height: 28px;
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.rank-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.rank-badge {
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-weight: 600;
+  font-size: 15px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%; /* 부모 .rank-item 기준으로 정렬 */
+}
+
+.rank-description {
+  margin-top: 12px;
+  font-size: 20px; /* 더 큼 */
+  font-weight: 500;
+  text-align: center;
+  color: var(--color-text-primary, #333);
+  line-height: 1.4;
+}

@@ -1,6 +1,5 @@
 /* 팝업을 헤더 아래에 위치시키기 */
 .location-popup-container {
-
   position: fixed;
   top: 150px; 
   left: 50%;

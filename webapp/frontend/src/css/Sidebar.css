@@ -1,16 +1,22 @@
 .sidebar {
-  flex: 1;
-  max-width: 560px;
-  min-width: 280px;
-  padding: 12px;
-  box-sizing: border-box;
-  background-color: #ecf0f1; /* 연회색 배경 */
+  width: 0;
+  overflow: hidden;
+  transition: width 0.3s ease;
+  background-color: #ecf0f1;
   border-left: 1px solid #ddd;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  padding: 0;
+  position: relative; /* 닫기 버튼 위치 기준 */
 }
 
-/* 흰색 박스: 깔끔한 카드형 UI */
+.sidebar.open {
+  width: 1000px; /* 원하는 너비로 열림 */
+  padding: 12px; /* 열릴 때 내부 여백 추가 */
+}
+
+/* 내부 박스 스타일 */
 .sidebar-box {
   flex: 1;
   background-color: white;
@@ -18,7 +24,31 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* 내부 컨텐츠 관리 */
+  overflow: hidden;
+  width: 100%; /* 부모 사이드바 너비에 꽉 차게 */
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  background-color: #f9f9f9; /* Optional 배경색 */
+  padding: 0 12px;
+  border-bottom: 1px solid #ddd;
+  gap: 10px; /* 이미지와 텍스트 사이 간격 */
+}
+
+.sidebar-header img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.sidebar-header span {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
 }
 
 .tabs {

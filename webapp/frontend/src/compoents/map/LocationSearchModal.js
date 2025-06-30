@@ -23,6 +23,8 @@ const LocationSearchModal = ({ isOpen, onClose }) => {
             boundaryLayer, setBoundaryGeojson,
             setBoundaryLayer, mapType
         });
+        //닫기
+        onClose();
     };
     if (!isOpen) return null;
 
@@ -39,7 +41,7 @@ const LocationSearchModal = ({ isOpen, onClose }) => {
                             <span>검색종류 : </span>
                             <select id='selectLocation' name='selectLocation'>
                                 <option value="location1">행정구역 검색</option>
-                                <option value="location2">경위도 좌표 검색</option>
+                                <option value="location2">나의 부대 찾기</option>
                             </select>
                         </h5>
                     </div>
