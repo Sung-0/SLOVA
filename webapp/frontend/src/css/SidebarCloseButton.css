@@ -1,0 +1,28 @@
+/* 사이드바 닫기 버튼 */
+.sidebar-close-button {
+  position: absolute;
+  left: 47%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 108px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 54px 0 0 54px; /* 왼쪽 반원 */
+  font-size: 18px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+  padding-left: 2px; /* 아이콘 정렬 약간 왼쪽으로 */
+  z-index: 1000;
+}
+
+.sidebar-close-button:hover {
+  background-color: #f5f5f5;
+  color: #333;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}

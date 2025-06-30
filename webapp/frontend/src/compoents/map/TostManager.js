@@ -1,19 +1,19 @@
 import { toast, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { RANK_INFO } from '../RANK_INFO' ;
 
-const rankMap = {
-    1: { label: '매우 낮음', color: '#0000FF' }, //파랑
-    2: { label: '낮음', color: '#00FFFF' }, // 시안
-    3: { label: '주의', color: '#FFFF00' }, // 노랑
-    4: { label: '위험', color: '#FFA500' }, // 오렌지
-    5: { label: '매우 위험', color: '#FF0000' } // 빨강
-};
+const rankMap = Object.fromEntries(
+    Object.entries(RANK_INFO).map(([rank, info]) => [rank, { label: info.name, color: info.color }])
+);
 
 export const showArmyToast = ({ name, rank }) => {
     const risk = rankMap[rank] || { label: '알 수 없음', color: '#999'};
 
+        // 등급이 3일 때 글자색 검정, 나머지는 흰색
+    const textColor = rank === 3 ? '#000' : '#fff';
+
     toast(
-        <div style={{ color: '#fff' }}>
+        <div style={{ color: textColor }}>
             <span style={{fontSize: '12px', fontWeight: 'bold'}}>부대 선택</span><br />
             <strong>📍 {name} 선택했습니다. </strong>
             위험도: <span style={{fontWeight: 'bold'}}>{risk.label}</span>

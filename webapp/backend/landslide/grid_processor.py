@@ -4,7 +4,7 @@ import os
 def export_geojson():
     # 파일 경로 설정
     base_dir = os.path.dirname(__file__)
-    geojson_path = os.path.abspath(os.path.join(base_dir, '..', 'data', 'test.geojson'))
+    geojson_path = os.path.abspath(os.path.join(base_dir, '..', 'data', 'merged_output.geojson'))
 
     # GeoJSON 파일 로드
     gdf = gpd.read_file(geojson_path)

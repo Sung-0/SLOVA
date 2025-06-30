@@ -1,10 +1,11 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState, useMemo } from "react";
 
 export const LandslideContext = createContext(null);
 
 export const useLandslide = () => useContext(LandslideContext);
 
 export const LandslideProvider = ({ children }) => {
+
   const [showLandslide, setShowLandslide ] = useState(false);
   const [cachedGeojson, setCachedGeojson] = useState(null);
 
@@ -22,8 +23,9 @@ export const LandslideProvider = ({ children }) => {
     if (!cachedGeojson) fetchLandslideGeoJSON();
   }, [cachedGeojson]);
 
+  const value = useMemo(() => ({ showLandslide, setShowLandslide, cachedGeojson }), [showLandslide, cachedGeojson]);
   return (
-    <LandslideContext.Provider value={{ showLandslide, setShowLandslide, cachedGeojson}}>
+    <LandslideContext.Provider value={value}>
       {children}
     </LandslideContext.Provider>
   );

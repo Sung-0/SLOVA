@@ -1,0 +1,93 @@
+.search-bar-container {
+  position: fixed;
+  top: 85px;
+  left: 239px;
+  transform: translateX(-50%);
+  padding: 7px 16px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  gap: 12px;
+  z-index: 1000;
+  height: 47px;
+  align-items: center;
+  max-width: 400px;
+  transition:
+    max-width 0.4s ease,
+    left 0.4s ease,
+    transform 0.4s ease,
+    padding 0.3s ease;
+}
+
+.search-dropdown.unit {
+  min-width: 160px;
+  flex: 1;
+}
+
+/* react-select 외부 wrapper */
+.search-dropdown {
+  width: 11rem; /* 기본 너비 (48) 또는 16rem(64)로 필요시 변경 가능 */
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* 실제 select 입력창 */
+.search-dropdown__control {
+  padding: 1px 10px;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+  min-height: 30px;
+  font-size: 13px;
+  box-shadow: none;
+  transition: border 0.2s ease;
+}
+
+.search-dropdown__control:hover {
+  border-color: #888;
+}
+
+/* 선택된 값 */
+.search-dropdown__single-value {
+  color: #333;
+  font-size: 13px;
+}
+
+/* 옵션 메뉴 */
+.search-dropdown__menu {
+  z-index: 10000;
+  font-size: 13px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  margin-top: 4px;
+}
+
+/* 각 옵션 항목 */
+.search-dropdown__option {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* 마우스 오버 */
+.search-dropdown__option--is-focused {
+  background-color: #f0f0f0;
+}
+
+/* 선택된 항목 */
+.search-dropdown__option--is-selected {
+  background-color: #e0e0e0;
+  font-weight: bold;
+}
+
+/* 유닛 아이콘 있는 옵션 커스텀용 */
+.unit-option {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.unit-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  object-fit: cover;
+}

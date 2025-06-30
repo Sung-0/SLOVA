@@ -5,7 +5,6 @@ export const handleSearch = async ({
     boundaryLayer, setBoundaryGeojson,
     setBoundaryLayer , mapType,
 }) => {
-    console.log('지도 타입:', mapType);
     if (!selectedLocation || !selectedLocation.code) {
         alert("행정구역을 선택하세요!");
         return;

@@ -1,0 +1,51 @@
+.welcome-popup {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid #2E473B;
+  padding: 28px 36px;
+  border-radius: 12px;
+  z-index: 1000;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  animation: fadeOut 3s ease-in-out forwards;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.popup-content h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #2E473B;
+  text-align: center;
+  font-weight: 700;
+}
+
+.popup-content p {
+  margin-top: 12px;
+  font-size: 1.05rem;
+  color: #333;
+  text-align: center;
+  opacity: 0;
+  animation: fadeIn 0.6s ease-in-out 1s forwards; /* 1초 후 등장 */
+}
+
+.Typewriter {
+  display: inline-block;
+  white-space: pre;
+}
+
+.Typewriter__cursor {
+  color: #2E473B;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
